@@ -1,0 +1,16 @@
+# Core GUI
+PyQt5>=5.15.10
+PyQt5
+
+# SSH
+paramiko>=3.4.0
+
+# Graphs/plots (choose either; app supports both)
+matplotlib>=3.9.0
+pyqtgraph>=0.13.7
+
+# System utilities (optional but useful)
+psutil>=6.0.0
+
+# Type hints helpers (optional)
+typing_extensions>=4.12.2

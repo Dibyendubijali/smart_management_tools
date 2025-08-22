@@ -1,0 +1,12 @@
+{
+  "servers": [
+    {
+      "name": "MyServer1",
+      "ip": "192.168.1.10",
+      "port": 22,
+      "username": "admin",
+      "auth_method": "password",
+      "password": "mypassword"
+    }
+  ]
+}

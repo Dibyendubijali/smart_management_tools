@@ -1,0 +1,24 @@
+2025-08-21 12:45:06,390 | WARNING | smart_management_tools | ui/main_window.py not found or failed to import. Using stub window. Details: No module named 'ui.main_window'
+2025-08-21 12:45:06,519 | INFO | smart_management_tools | Loaded 0 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 10:37:15,081 | WARNING | smart_management_tools | ui/main_window.py not found or failed to import. Using stub window. Details: cannot import name 'MainWindow' from 'ui.main_window' (c:\Users\dibyendu\Desktop\smart_management_tools\ui\main_window.py)
+2025-08-22 10:37:15,584 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 10:43:09,960 | WARNING | smart_management_tools | ui/main_window.py not found or failed to import. Using stub window. Details: cannot import name 'MainWindow' from 'ui.main_window' (c:\Users\dibyendu\Desktop\smart_management_tools\ui\main_window.py)
+2025-08-22 10:43:10,085 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 10:47:10,505 | WARNING | smart_management_tools | ui/main_window.py not found or failed to import. Using stub window. Details: cannot import name 'MainWindow' from 'ui.main_window' (c:\Users\dibyendu\Desktop\smart_management_tools\ui\main_window.py)
+2025-08-22 10:47:10,631 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 10:53:56,923 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 11:09:45,828 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 11:34:22,655 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 11:41:48,474 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 11:53:47,672 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 12:05:50,789 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 12:06:08,334 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 12:10:29,618 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 12:10:55,401 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 12:12:29,704 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 12:13:17,897 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 12:13:22,567 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 12:13:23,630 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 12:13:56,882 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 12:14:54,273 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-22 12:21:33,111 | INFO | smart_management_tools | Loaded 1 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
