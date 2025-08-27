@@ -4,7 +4,13 @@ from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QListWidget, QLineEdit, QLabel, QMessageBox
 )
 
-SERVER_STORE_PATH = Path("features/server_registration/server_store.json")
+
+# Import backend logic
+from features.server_registration.add_server import add_server
+from features.server_registration.remove_server import remove_server
+
+#SERVER_STORE_PATH = Path("features/server_registration/server_store.json")
+SERVER_STORE_PATH = Path(__file__).resolve().parent.parent / "features" / "server_registration" / "server_store.json"
 
 class ServerListUI(QWidget):
     """
@@ -58,9 +64,24 @@ class ServerListUI(QWidget):
         """Load servers from JSON file."""
         self.server_list.clear()
         if SERVER_STORE_PATH.exists():
-            data = json.loads(SERVER_STORE_PATH.read_text(encoding="utf-8"))
-            for server in data.get("servers", []):
-                self.server_list.addItem(f"{server['ip']} ({server['username']})")
+            try:
+                data = json.loads(SERVER_STORE_PATH.read_text(encoding="utf-8"))
+                servers = data.get("servers", [])
+                for server in servers:
+                    # Ensure server is a dict
+                    if isinstance(server, dict):
+                        ip = server.get("ip", "N/A")
+                        user = server.get("username", "N/A")
+                        self.server_list.addItem(f"{ip} ({user})")
+                    else:
+                        # Log or show error if server entry malformed
+                        print(f"Error parsing server entry: expected dict but got {type(server)}")
+                        self.server_list.addItem("⚠️ Error parsing server entry")
+            except Exception as e:
+                print(f"Failed to load servers: {e}")
+                self.server_list.addItem("⚠️ Failed to load servers")
+        else:
+            self.server_list.addItem("No servers registered yet.")
 
     def add_server(self):
         """Add a server to JSON file."""
@@ -72,34 +93,35 @@ class ServerListUI(QWidget):
             QMessageBox.warning(self, "Error", "IP and Username are required!")
             return
 
-        data = {}
-        if SERVER_STORE_PATH.exists():
-            data = json.loads(SERVER_STORE_PATH.read_text(encoding="utf-8"))
-
-        if "servers" not in data:
-            data["servers"] = []
-
-        data["servers"].append({
-            "ip": ip,
-            "port": 22,
-            "username": user,
-            "password": password
-        })
-
-        SERVER_STORE_PATH.write_text(json.dumps(data, indent=2), encoding="utf-8")
-        QMessageBox.information(self, "Success", f"Server {ip} added!")
-        self.load_servers()
+        success = add_server(ip, user, password)
+        if not success:
+            QMessageBox.warning(self, "Error", "Server already exists or failed to add.")
+        else:
+            QMessageBox.information(self, "Success", f"Server {ip} added!")
+            self.ip_input.clear()
+            self.user_input.clear()
+            self.pass_input.clear()
+            self.load_servers()
 
     def remove_server(self):
-        """Remove selected server from JSON file."""
+        """Trigger removing a server via backend function."""
         selected = self.server_list.currentRow()
         if selected == -1:
             QMessageBox.warning(self, "Error", "Select a server to remove!")
             return
 
-        data = json.loads(SERVER_STORE_PATH.read_text(encoding="utf-8"))
-        removed = data["servers"].pop(selected)
-        SERVER_STORE_PATH.write_text(json.dumps(data, indent=2), encoding="utf-8")
+        confirm = QMessageBox.question(
+            self,
+            "Confirm Removal",
+            "Are you sure you want to remove the selected server?",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        if confirm != QMessageBox.Yes:
+            return
 
-        QMessageBox.information(self, "Removed", f"Server {removed['ip']} removed.")
-        self.load_servers()
+        success = remove_server(selected)
+        if success:
+            QMessageBox.information(self, "Removed", "Server removed successfully.")
+            self.load_servers()
+        else:
+            QMessageBox.warning(self, "Error", "Failed to remove server.")

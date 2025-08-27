@@ -1,24 +1,25 @@
 from PyQt5.QtWidgets import (
-    QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QListWidget
+    QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QStackedWidget, QTextEdit
 )
 from PyQt5.QtCore import Qt
-from ui.server_list_ui import ServerListUI  # Import your server UI here
+
+from ui.server_list_ui import ServerListUI
+from ui.terminal_ui import TerminalUI
+from features.server_monitoring.resource_graph import ResourceGraph
+from features.server_monitoring.cpu_memory_disk import get_resource_usage
+from features.ssh_access.ssh_connect import get_active_ssh_client
+from features.process_logs.log_viewer import fetch_logs
+
 
 class MainWindow(QMainWindow):
-    """
-    Main application window.
-    Provides navigation between features using a sidebar.
-    """
-
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Smart Management Tools")
         self.resize(1000, 600)
 
-        # Central layout
         main_layout = QHBoxLayout()
 
-        # Sidebar (navigation menu)
+        # Sidebar
         sidebar = QVBoxLayout()
         self.server_list_btn = QPushButton("📋 Server List")
         self.terminal_btn = QPushButton("💻 Terminal")
@@ -26,14 +27,6 @@ class MainWindow(QMainWindow):
         self.logs_btn = QPushButton("📑 Logs")
         self.shell_btn = QPushButton("⚙️ Shell Exec")
 
-        # Connect buttons to functions
-        self.server_list_btn.clicked.connect(self.show_server_list)
-        self.terminal_btn.clicked.connect(self.show_terminal)
-        self.monitor_btn.clicked.connect(self.show_monitoring)
-        self.logs_btn.clicked.connect(self.show_logs)
-        self.shell_btn.clicked.connect(self.show_shell_exec)
-
-        # Add buttons to sidebar
         sidebar.addWidget(self.server_list_btn)
         sidebar.addWidget(self.terminal_btn)
         sidebar.addWidget(self.monitor_btn)
@@ -41,17 +34,23 @@ class MainWindow(QMainWindow):
         sidebar.addWidget(self.shell_btn)
         sidebar.addStretch(1)
 
-        # Content area (placeholder until UIs are implemented)
-        self.content_area = QListWidget()
-        self.content_area.addItem("Welcome to Smart Management Tools!")
-        self.content_area.addItem("Use the sidebar to navigate.")
-        
-        # Content area as QWidget container
-       # self.content_area = QWidget()
-        #self.content_layout = QVBoxLayout()
-        #self.content_area.setLayout(self.content_layout)
+        # Main content area
+        self.content_area = QStackedWidget()
 
-        # Combine layouts
+        self.server_list_ui = ServerListUI()
+        self.terminal_ui = TerminalUI()
+        self.monitor_widget = QWidget()
+        self.logs_ui = QTextEdit()
+        self.logs_ui.setReadOnly(True)
+        self.shell_exec_ui = QLabel("⚙️ Shell executor will go here.")
+        self.shell_exec_ui.setAlignment(Qt.AlignCenter)
+
+        self.content_area.addWidget(self.server_list_ui)
+        self.content_area.addWidget(self.terminal_ui)
+        self.content_area.addWidget(self.monitor_widget)
+        self.content_area.addWidget(self.logs_ui)
+        self.content_area.addWidget(self.shell_exec_ui)
+
         main_layout.addLayout(sidebar, 1)
         main_layout.addWidget(self.content_area, 4)
 
@@ -59,49 +58,63 @@ class MainWindow(QMainWindow):
         container.setLayout(main_layout)
         self.setCentralWidget(container)
 
-        # Default view
-       # self.show_welcome_message()
+        # Button signals
+        self.server_list_btn.clicked.connect(lambda: self.content_area.setCurrentWidget(self.server_list_ui))
+        self.terminal_btn.clicked.connect(self.show_terminal)
+        self.monitor_btn.clicked.connect(self.show_monitoring)
+        self.logs_btn.clicked.connect(self.show_logs)
+        self.shell_btn.clicked.connect(lambda: self.content_area.setCurrentWidget(self.shell_exec_ui))
 
-   # def clear_content_area(self):
-        # Remove all widgets from content_layout
-       # while self.content_layout.count():
-       #     child = self.content_layout.takeAt(0)
-       #     if child.widget():
-       #         child.widget().deleteLater()
-
-    #def show_welcome_message(self):
-     #   self.clear_content_area()
-      #  from PyQt5.QtWidgets import QLabel
-      #  label = QLabel("Welcome to Smart Management Tools!\nUse the sidebar to navigate.")
-       # label.setAlignment(Qt.AlignCenter)
-        #self.content_layout.addWidget(label)
-
-    # Button click functions
-    def show_server_list(self):
-        self.content_area.clear()
-        self.content_area.addItem("📋 Registered Servers")
-        self.content_area.addItem("List of servers will be shown here.")
+        # Default page
+        self.content_area.setCurrentWidget(self.server_list_ui)
 
     def show_terminal(self):
-        self.content_area.clear()
-        self.content_area.addItem("💻 Terminal Access")
-        self.content_area.addItem("Terminal UI will appear here.")
+        # When terminal tab is opened, refresh active ssh client from terminal UI
+        self.terminal_ui.refresh_ssh_client()
+        self.content_area.setCurrentWidget(self.terminal_ui)
 
     def show_monitoring(self):
-        self.content_area.clear()
-        self.content_area.addItem("📊 Server Monitoring")
-        self.content_area.addItem("CPU, Memory, Disk graphs go here.")
+        ssh_client = get_active_ssh_client()
+
+        # Clear previous monitor widget layout/widgets if any
+        for i in reversed(range(self.monitor_widget.layout().count()) if self.monitor_widget.layout() else []):
+            widget = self.monitor_widget.layout().itemAt(i).widget()
+            if widget:
+                widget.setParent(None)
+
+        layout = QVBoxLayout()
+        self.monitor_widget.setLayout(layout)
+
+        if not ssh_client or not ssh_client.get_transport() or not ssh_client.get_transport().is_active():
+            label = QLabel("⚠️ No active SSH connection. Please open a Terminal connection first.")
+            label.setAlignment(Qt.AlignCenter)
+            layout.addWidget(label)
+        else:
+            try:
+                ip = ssh_client.get_transport().getpeername()[0]
+                label = QLabel(f"📡 Monitoring active server: {ip}")
+                label.setAlignment(Qt.AlignCenter)
+                layout.addWidget(label)
+
+                monitor_graph = ResourceGraph(fetch_callback=lambda: get_resource_usage(ssh_client))
+                layout.addWidget(monitor_graph)
+            except Exception as e:
+                label = QLabel(f"❌ Error getting monitoring data.\nTry reconnecting the terminal.\nError: {str(e)}")
+                label.setAlignment(Qt.AlignCenter)
+                layout.addWidget(label)
+
+        self.content_area.setCurrentWidget(self.monitor_widget)
 
     def show_logs(self):
-        self.content_area.clear()
-        self.content_area.addItem("📑 Log Viewer")
-        self.content_area.addItem("Logs from /var/log/syslog or messages.")
+        ssh_client = get_active_ssh_client()
 
-    def show_shell_exec(self):
-        self.content_area.clear()
-        self.content_area.addItem("⚙️ Remote Shell")
-        self.content_area.addItem("Enter command to run remotely.")
+        if not ssh_client or not ssh_client.get_transport() or not ssh_client.get_transport().is_active():
+            self.logs_ui.setPlainText("⚠️ No active SSH connection. Please open a Terminal connection first.")
+        else:
+            try:
+                logs = fetch_logs(ssh_client)
+                self.logs_ui.setPlainText(logs.strip() if logs else "⚠️ No logs found.")
+            except Exception:
+                self.logs_ui.setPlainText("❌ Failed to fetch logs. SSH session may be closed.")
 
-# Export function
-def get_main_window():
-    return MainWindow()
+        self.content_area.setCurrentWidget(self.logs_ui)

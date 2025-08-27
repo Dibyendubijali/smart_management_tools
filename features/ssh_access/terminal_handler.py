@@ -1,6 +1,11 @@
 import logging
 from PyQt5.QtCore import QThread, pyqtSignal
 
+from features.ssh_access.ssh_connect1 import set_active_ssh_client
+
+# After successful connection:
+set_active_ssh_client(ssh_client)
+
 logger = logging.getLogger("terminal_handler")
 
 class TerminalWorker(QThread):

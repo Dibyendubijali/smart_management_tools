@@ -4,31 +4,15 @@ import logging
 logger = logging.getLogger("ssh_connect")
 
 # 🔁 Global variable to store the active SSH client
-_active_ssh_client = None
-
+_active_ssh_client = None  # 👈 This will store the connected SSH client globally
 
 def set_active_ssh_client(client):
-    """
-    Save a globally accessible SSH client instance.
-    """
     global _active_ssh_client
     _active_ssh_client = client
 
-
 def get_active_ssh_client():
-    """
-    Retrieve the active SSH client, if connected and still alive.
-    """
     global _active_ssh_client
-    if _active_ssh_client is not None:
-        try:
-            # ✅ Check if the client is still connected
-            transport = _active_ssh_client.get_transport()
-            if transport and transport.is_active():
-                return _active_ssh_client
-        except Exception:
-            pass
-    return None
+    return _active_ssh_client
 
 
 def create_ssh_client(ip: str, port: int, username: str, password: str = "", key_file: str = None):
@@ -55,7 +39,6 @@ def create_ssh_client(ip: str, port: int, username: str, password: str = "", key
         set_active_ssh_client(client)
 
         return client
-
     except Exception as e:
         logger.error("Failed to connect to %s:%d: %s", ip, port, e)
         return None
