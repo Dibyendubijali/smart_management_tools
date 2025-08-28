@@ -3,3 +3,5 @@ features/server_registration/server_store.json
 
 # Ignore all __pycache__ directories
 __pycache__/
+
+Jenkinsfile

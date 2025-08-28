@@ -1,12 +1,11 @@
 from PyQt5.QtWidgets import (
-    QWidget, QVBoxLayout, QTextEdit, QLineEdit, QPushButton, QListWidget, QLabel
+    QWidget, QVBoxLayout, QTextEdit, QLineEdit, QPushButton, QListWidget, QLabel, QHBoxLayout, QSplitter, QSizePolicy
 )
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
-import paramiko
-import json
-import os
+from PyQt5.QtGui import QFont
+import paramiko, json, os, re
 
-from features.ssh_access.ssh_connect import set_active_ssh_client, get_active_ssh_client
+from features.ssh_access.ssh_connect import set_active_ssh_client
 
 SERVER_STORE = "features/server_registration/server_store.json"
 
@@ -59,35 +58,66 @@ class TerminalUI(QWidget):
         super().__init__()
         self.setWindowTitle("Terminal Access")
 
-        self.layout = QVBoxLayout()
-        self.setLayout(self.layout)
+        # Main layout
+        main_layout = QHBoxLayout()
+        self.setLayout(main_layout)
 
-        self.server_list_label = QLabel("Select a server:")
+        # Font
+        self.monospace_font = QFont("Consolas", 11)
+
+        # ========== LEFT PANEL ==========
+        self.left_panel = QWidget()
+        self.left_layout = QVBoxLayout()
+        self.left_layout.setContentsMargins(5, 5, 5, 5)
+        self.left_panel.setLayout(self.left_layout)
+
+        self.server_list_label = QLabel("Select a server:----")
         self.server_list_widget = QListWidget()
+        self.left_layout.addWidget(self.server_list_label)
+        self.left_layout.addWidget(self.server_list_widget)
+
         self.server_list_widget.itemClicked.connect(self.server_selected)
 
-        self.layout.addWidget(self.server_list_label)
-        self.layout.addWidget(self.server_list_widget)
+        # ========== RIGHT PANEL ==========
+        self.right_panel = QWidget()
+        self.right_layout = QVBoxLayout()
+        self.right_layout.setContentsMargins(5, 5, 5, 5)
+        self.right_panel.setLayout(self.right_layout)
 
         self.output_area = QTextEdit()
         self.output_area.setReadOnly(True)
-        self.layout.addWidget(self.output_area)
+        self.output_area.setFont(self.monospace_font)
 
         self.input_line = QLineEdit()
         self.input_line.setPlaceholderText("Enter command...")
-        self.run_btn = QPushButton("▶ Run Command")
-        self.run_btn.setEnabled(False)
+        self.input_line.setFont(self.monospace_font)
         self.input_line.setEnabled(False)
 
-        self.layout.addWidget(self.input_line)
-        self.layout.addWidget(self.run_btn)
+        self.run_btn = QPushButton("▶ Run Command")
+        self.run_btn.setEnabled(False)
 
+        self.right_layout.addWidget(self.output_area)
+        self.right_layout.addWidget(self.input_line)
+        self.right_layout.addWidget(self.run_btn)
+
+        # ========== Splitter (Resizable Panels) ==========
+        splitter = QSplitter(Qt.Horizontal)
+        splitter.addWidget(self.left_panel)
+        splitter.addWidget(self.right_panel)
+        splitter.setStretchFactor(0, 1)
+        splitter.setStretchFactor(1, 3)
+
+        main_layout.addWidget(splitter)
+
+        # ========== Events ==========
         self.run_btn.clicked.connect(self.send_command)
         self.input_line.returnPressed.connect(self.send_command)
 
+        # State
         self.worker = None
         self.active_server_ip = None
         self.servers = []
+
         self.load_servers()
 
     def load_servers(self):
@@ -140,12 +170,12 @@ class TerminalUI(QWidget):
         self.output_area.clear()
         self.output_area.append(f"🔌 Connecting to {ip} as {username}...\n")
 
-        # Stop old session if any
+        # Stop previous worker
         if self.worker:
             self.worker.stop()
             self.worker.wait()
 
-        # Start new session
+        # Start new SSH worker
         self.worker = SSHWorker(ip, username, password)
         self.worker.data_received.connect(self.append_output)
         self.worker.error.connect(self.show_error)
@@ -157,12 +187,14 @@ class TerminalUI(QWidget):
         self.input_line.setFocus()
 
     def append_output(self, text):
-        # Maintain cursor position at the end
+        ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+        clean_text = ansi_escape.sub('', text)
+
         cursor = self.output_area.textCursor()
         cursor.movePosition(cursor.End)
         self.output_area.setTextCursor(cursor)
 
-        self.output_area.insertPlainText(text)
+        self.output_area.insertPlainText(clean_text)
         self.output_area.ensureCursorVisible()
 
     def send_command(self, cmd=None):
@@ -173,14 +205,12 @@ class TerminalUI(QWidget):
         self.worker.send_command(cmd)
         self.input_line.clear()
 
-
     def show_error(self, msg):
         self.output_area.append(f"\n❌ {msg}\n")
         self.run_btn.setEnabled(False)
         self.input_line.setEnabled(False)
 
     def refresh_ssh_client(self):
-        # Maintain global SSH client consistency if needed elsewhere
         if self.worker and self.worker.client:
             set_active_ssh_client(self.worker.client)
         else:
@@ -188,7 +218,6 @@ class TerminalUI(QWidget):
 
     def showEvent(self, event):
         super().showEvent(event)
-        # On tab/window show refresh global client pointer
         self.refresh_ssh_client()
 
     def closeEvent(self, event):
