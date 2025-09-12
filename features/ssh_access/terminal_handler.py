@@ -1,34 +1,32 @@
-import logging
-from PyQt5.QtCore import QThread, pyqtSignal
+# features/ssh_access/terminal_handler.py
 
-from features.ssh_access.ssh_connect1 import set_active_ssh_client
+import pyte
 
-# After successful connection:
-set_active_ssh_client(ssh_client)
 
-logger = logging.getLogger("terminal_handler")
-
-class TerminalWorker(QThread):
+class TerminalHandler:
     """
-    A worker thread that runs a command over SSH and streams the output.
-    Emits output lines via signal for live display in the GUI terminal.
+    Handles terminal screen emulation using pyte.
+    Converts raw SSH output (with escape sequences) into clean, rendered text.
     """
-    output_ready = pyqtSignal(str)
 
-    def __init__(self, ssh_client, command: str):
-        super().__init__()
-        self.ssh_client = ssh_client
-        self.command = command
+    def __init__(self, width=120, height=30):
+        self.screen = pyte.Screen(width, height)
+        self.stream = pyte.Stream()
+        self.stream.attach(self.screen)
 
-    def run(self):
-        try:
-            stdin, stdout, stderr = self.ssh_client.exec_command(self.command)
-            for line in iter(stdout.readline, ""):
-                if line:
-                    self.output_ready.emit(line.strip())
-            err = stderr.read().decode()
-            if err:
-                self.output_ready.emit(f"[ERROR] {err}")
-        except Exception as e:
-            logger.error("Error executing command in terminal: %s", e)
-            self.output_ready.emit(f"[ERROR] {e}")
+    def feed(self, data: str):
+        """Feed raw terminal output to the emulator."""
+        self.stream.feed(data)
+
+    def get_display(self) -> str:
+        """Return the full current screen display as text."""
+        return "\n".join(self.screen.display)
+
+    def reset(self):
+        """Reset the screen (e.g. on reconnect)."""
+        self.screen.reset()
+
+
+    def reset(self):
+        """Reset the screen (e.g. on reconnect)."""
+        self.screen.reset()

@@ -524,3 +524,272 @@
 2025-08-28 13:00:44,889 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_8.9p1)
 2025-08-28 13:00:45,005 | INFO | paramiko.transport | Authentication (password) successful!
 2025-08-28 14:17:16,002 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-28 15:48:44,537 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-28 15:48:48,400 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_8.9p1)
+2025-08-28 15:48:48,516 | INFO | paramiko.transport | Authentication (password) successful!
+2025-08-29 12:51:59,796 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-29 12:53:18,042 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-08-29 12:53:22,060 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-08-29 12:53:22,326 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-02 12:15:25,248 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-02 12:15:48,921 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-02 12:15:49,143 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-02 17:52:07,620 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-02 17:52:12,413 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-02 17:52:12,645 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 09:10:45,392 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 09:37:26,570 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 09:37:50,962 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 09:38:12,059 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 09:38:12,333 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 09:42:28,680 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 09:42:32,063 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 09:42:32,284 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 10:15:47,386 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 10:17:29,106 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 10:17:35,482 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 10:17:35,714 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 10:17:42,621 | INFO | shell_command | Executing command: ip a
+2025-09-03 10:17:52,845 | INFO | shell_command | Executing command: ls -la
+2025-09-03 10:17:57,690 | INFO | shell_command | Executing command: top
+2025-09-03 10:17:57,888 | WARNING | shell_command | Command returned error: TERM environment variable not set.
+2025-09-03 10:18:09,045 | INFO | shell_command | Executing command: top
+2025-09-03 10:18:09,256 | WARNING | shell_command | Command returned error: TERM environment variable not set.
+2025-09-03 10:18:15,285 | INFO | shell_command | Executing command: lsblk
+2025-09-03 10:18:32,549 | INFO | shell_command | Executing command: ps -ef sshd
+2025-09-03 10:18:32,740 | WARNING | shell_command | Command returned error: ERROR: Unsupported option (BSD syntax)
+********* simple selection *********  ********* selection by list *********
+-A all processes                      -C by command name
+-N negate selection                   -G by real group ID (supports names)
+-a all w/ tty except session leaders  -U by real user ID (supports names)
+-d all except session leaders         -g by session OR by effective group name
+-e all processes                      -p by process ID
+T  all processes on this terminal     -s processes in the sessions given
+a  all w/ tty, including other users  -t by tty
+g  OBSOLETE -- DO NOT USE             -u by effective user ID (supports names)
+r  only running processes             U  processes for specified users
+x  processes w/o controlling ttys     t  by tty
+*********** output format **********  *********** long options ***********
+-o,o user-defined  -f full            --Group --User --pid --cols --ppid
+-j,j job control   s  signal          --group --user --sid --rows --info
+-O,O preloaded -o  v  virtual memory  --cumulative --format --deselect
+-l,l long          u  user-oriented   --sort --tty --forest --version
+-F   extra full    X  registers       --heading --no-heading --context
+                    ********* misc options *********
+-V,V  show version      L  list format codes  f  ASCII art forest
+-m,m,-L,-T,H  threads   S  children in sum    -y change -l format
+-M,Z  security data     c  true command name  -c scheduling class
+-w,w  wide output       n  numeric WCHAN,UID  -H process hierarchy
+2025-09-03 10:18:59,620 | INFO | shell_command | Executing command: ll
+2025-09-03 10:19:02,878 | INFO | shell_command | Executing command: top
+2025-09-03 10:19:03,133 | WARNING | shell_command | Command returned error: TERM environment variable not set.
+2025-09-03 10:19:05,357 | INFO | shell_command | Executing command: top
+2025-09-03 10:19:05,615 | WARNING | shell_command | Command returned error: TERM environment variable not set.
+2025-09-03 10:22:21,188 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 10:22:24,327 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 10:22:24,572 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 10:22:32,356 | INFO | shell_command | Executing command with PTY: ll
+2025-09-03 10:22:36,780 | INFO | shell_command | Executing command with PTY: top
+2025-09-03 10:38:42,369 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 10:38:46,669 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 10:38:46,891 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 10:38:59,801 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 10:39:01,059 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 10:49:53,671 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 10:49:57,915 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 10:49:58,149 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 10:50:13,674 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 10:50:14,772 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 10:50:25,919 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 10:50:30,113 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 10:50:30,340 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 10:50:38,574 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-03 10:50:38,805 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 10:55:59,803 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 12:08:12,384 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 12:08:21,719 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 12:08:21,949 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 12:08:54,028 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 12:18:07,633 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 12:21:41,674 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 12:21:49,457 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-03 12:21:49,679 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 12:28:21,886 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 14:50:28,461 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 14:50:45,440 | INFO | ssh_connect | Connecting to 192.168.2.6 with password
+2025-09-03 14:50:45,457 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 14:50:50,626 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 14:50:50,627 | INFO | ssh_connect | SSH connection established to 192.168.2.6:22
+2025-09-03 14:50:50,644 | INFO | interactive_ssh_worker | SSH interactive shell started.
+2025-09-03 14:51:23,921 | INFO | interactive_ssh_worker | [Sending command] ip a
+2025-09-03 14:52:30,706 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 14:52:35,576 | INFO | ssh_connect | Connecting to 192.168.2.6 with password
+2025-09-03 14:52:35,591 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 14:52:40,744 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 14:52:40,744 | INFO | ssh_connect | SSH connection established to 192.168.2.6:22
+2025-09-03 14:52:40,761 | INFO | interactive_ssh_worker | SSH interactive shell started.
+2025-09-03 14:52:50,047 | INFO | interactive_ssh_worker | [Sending command] ls
+2025-09-03 14:53:01,819 | INFO | interactive_ssh_worker | [Sending command] pwd
+2025-09-03 14:53:09,402 | INFO | interactive_ssh_worker | [Sending command] top
+2025-09-03 14:53:25,740 | INFO | interactive_ssh_worker | [Sending command] q
+2025-09-03 15:45:16,791 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-03 15:45:22,198 | INFO | ssh_connect | Connecting to 192.168.2.6 with password
+2025-09-03 15:45:22,217 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 15:45:22,402 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-03 15:45:22,403 | INFO | ssh_connect | SSH connection established to 192.168.2.6:22
+2025-09-03 15:45:22,419 | INFO | interactive_ssh_worker | SSH interactive shell started.
+2025-09-03 15:45:35,006 | INFO | interactive_ssh_worker | [Sending command] ls -la
+2025-09-03 15:45:42,409 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-03 15:45:42,588 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-04 17:39:53,688 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-04 17:39:59,953 | INFO | ssh_connect | Connecting to 192.168.2.6 with password
+2025-09-04 17:40:09,965 | ERROR | ssh_connect | Failed to connect to 192.168.2.6:22: timed out
+2025-09-04 17:40:09,991 | INFO | ssh_connect | Connecting to 192.168.2.6 with password
+2025-09-04 17:40:10,006 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-04 17:40:10,192 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-04 17:40:10,193 | INFO | ssh_connect | SSH connection established to 192.168.2.6:22
+2025-09-04 17:40:10,209 | INFO | interactive_ssh_worker | SSH interactive shell started.
+2025-09-04 17:40:19,191 | INFO | interactive_ssh_worker | [Sending command] i a
+2025-09-04 17:40:23,847 | INFO | interactive_ssh_worker | [Sending command] ip a
+2025-09-04 17:40:28,647 | INFO | interactive_ssh_worker | [Sending command] top
+2025-09-04 17:40:38,202 | INFO | interactive_ssh_worker | [Sending command] top
+2025-09-04 17:40:40,171 | INFO | interactive_ssh_worker | [Sending command] q
+2025-09-04 17:40:42,644 | INFO | interactive_ssh_worker | [Sending command] top
+2025-09-04 17:40:50,426 | INFO | interactive_ssh_worker | [Sending command] ip a
+2025-09-04 17:40:53,304 | INFO | interactive_ssh_worker | [Sending command] q
+2025-09-04 17:40:56,642 | INFO | interactive_ssh_worker | [Sending command] ip a
+2025-09-05 09:31:15,355 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 09:31:29,679 | INFO | ssh_connect | Connecting to 192.168.2.75 with password
+2025-09-05 09:31:39,683 | ERROR | ssh_connect | Failed to connect to 192.168.2.75:22: timed out
+2025-09-05 09:31:46,642 | INFO | ssh_connect | Connecting to 192.168.2.6 with password
+2025-09-05 09:31:56,643 | ERROR | ssh_connect | Failed to connect to 192.168.2.6:22: timed out
+2025-09-05 09:31:56,649 | INFO | ssh_connect | Connecting to 192.168.2.6 with password
+2025-09-05 09:31:56,663 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 09:31:56,899 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 09:31:56,899 | INFO | ssh_connect | SSH connection established to 192.168.2.6:22
+2025-09-05 09:31:56,959 | INFO | interactive_ssh_worker | SSH interactive shell started.
+2025-09-05 09:33:18,341 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_9.2p1)
+2025-09-05 09:33:20,044 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 09:33:20,268 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 09:57:12,945 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 09:57:18,208 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 09:57:18,408 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 11:15:20,878 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 11:15:25,071 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 11:15:25,256 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 11:20:31,633 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 11:20:37,999 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 11:20:38,186 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 11:23:28,743 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 11:23:32,453 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 11:23:32,639 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 11:43:13,289 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 11:43:16,436 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 11:43:16,621 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 11:47:31,989 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 11:47:35,527 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 11:47:35,707 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 11:54:16,672 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 11:54:19,695 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 11:54:24,871 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 11:57:26,315 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 11:57:30,166 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 11:57:30,421 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 11:58:40,218 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 11:58:44,128 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 11:58:44,317 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 11:59:12,926 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 11:59:17,322 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 11:59:17,510 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 12:14:34,757 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 12:14:37,999 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 12:14:38,190 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 12:21:43,583 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 12:23:08,477 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 12:23:08,659 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 15:35:39,805 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 15:35:43,793 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 15:35:43,984 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 15:41:01,842 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 15:41:04,921 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 15:41:05,114 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 15:41:31,766 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 15:41:35,234 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 15:41:35,423 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 15:41:50,644 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-05 15:41:50,824 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 15:46:07,901 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 15:46:11,378 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 15:46:11,567 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 15:53:53,166 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 15:53:56,530 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 15:53:56,716 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 15:54:20,730 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-05 15:54:22,040 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-05 15:59:24,065 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-05 15:59:29,579 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-05 15:59:29,763 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 09:31:42,364 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 09:32:50,738 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 09:32:50,999 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 09:32:58,027 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-12 09:32:58,212 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 09:33:50,467 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 09:33:51,791 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 09:42:01,790 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 09:42:40,323 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 09:42:40,513 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 09:58:52,906 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 09:58:56,272 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 09:58:56,499 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 09:59:05,308 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-12 09:59:06,944 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 10:57:32,417 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 10:57:35,890 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 10:57:36,074 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:12:43,959 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 11:12:47,236 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 11:12:47,416 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:13:11,488 | ERROR | paramiko.transport | Secsh channel 10 open FAILED: open failed: Administratively prohibited
+2025-09-12 11:13:26,310 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-12 11:13:44,152 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 11:13:47,213 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-12 11:13:47,400 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:14:49,670 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 11:14:51,102 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:16:44,937 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 11:16:47,677 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 11:16:47,865 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:16:50,983 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-12 11:16:51,169 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:16:52,759 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 11:16:52,950 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:17:16,968 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 11:17:19,946 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-12 11:17:20,131 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:17:25,830 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 11:17:28,687 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 11:17:28,868 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:19:54,775 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 11:19:58,432 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 11:19:58,651 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:21:50,434 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 11:21:53,862 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 11:21:54,047 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:21:59,644 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-12 11:22:01,084 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:24:01,066 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 11:24:02,151 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:24:07,662 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-12 11:24:08,711 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:24:17,475 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 11:24:19,049 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:24:57,084 | INFO | smart_management_tools | Loaded 3 server(s) from C:\Users\dibyendu\Desktop\smart_management_tools\features\server_registration\server_store.json
+2025-09-12 11:25:00,117 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 11:25:00,307 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:25:02,582 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-12 11:25:02,783 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:25:04,055 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_5.3)
+2025-09-12 11:25:04,296 | INFO | paramiko.transport | Authentication (password) successful!
+2025-09-12 11:25:09,902 | INFO | paramiko.transport | Connected (version 2.0, client OpenSSH_4.3)
+2025-09-12 11:25:10,098 | INFO | paramiko.transport | Authentication (password) successful!

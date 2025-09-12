@@ -9,6 +9,7 @@ from features.server_monitoring.resource_graph import ResourceGraph
 from features.server_monitoring.cpu_memory_disk import get_resource_usage
 from features.ssh_access.ssh_connect import get_active_ssh_client
 from features.process_logs.log_viewer import fetch_logs
+from ui.shell_exec_ui import ShellExecUI
 
 
 class MainWindow(QMainWindow):
@@ -42,14 +43,12 @@ class MainWindow(QMainWindow):
         self.monitor_widget = QWidget()
         self.logs_ui = QTextEdit()
         self.logs_ui.setReadOnly(True)
-        self.shell_exec_ui = QLabel("⚙️ Shell executor will go here.")
-        self.shell_exec_ui.setAlignment(Qt.AlignCenter)
+        self.shell_exec_ui = None  # Initialize as None
 
         self.content_area.addWidget(self.server_list_ui)
         self.content_area.addWidget(self.terminal_ui)
         self.content_area.addWidget(self.monitor_widget)
         self.content_area.addWidget(self.logs_ui)
-        self.content_area.addWidget(self.shell_exec_ui)
 
         main_layout.addLayout(sidebar, 1)
         main_layout.addWidget(self.content_area, 4)
@@ -63,7 +62,7 @@ class MainWindow(QMainWindow):
         self.terminal_btn.clicked.connect(self.show_terminal)
         self.monitor_btn.clicked.connect(self.show_monitoring)
         self.logs_btn.clicked.connect(self.show_logs)
-        self.shell_btn.clicked.connect(lambda: self.content_area.setCurrentWidget(self.shell_exec_ui))
+        self.shell_btn.clicked.connect(self.open_shell_exec_tab)  # ✅ Correct connection
 
         # Default page
         self.content_area.setCurrentWidget(self.server_list_ui)
@@ -118,3 +117,22 @@ class MainWindow(QMainWindow):
                 self.logs_ui.setPlainText("❌ Failed to fetch logs. SSH session may be closed.")
 
         self.content_area.setCurrentWidget(self.logs_ui)
+
+    def open_shell_exec_tab(self):
+        ssh_client = get_active_ssh_client()
+        if not ssh_client:
+            warning_label = QLabel("❌ No active SSH connection.\nPlease open a Terminal connection first.")
+            warning_label.setAlignment(Qt.AlignCenter)
+            self.content_area.addWidget(warning_label)
+            self.content_area.setCurrentWidget(warning_label)
+            return
+
+        # 🔁 Clean up old ShellExecUI if it exists
+        if self.shell_exec_ui:
+            self.content_area.removeWidget(self.shell_exec_ui)
+            self.shell_exec_ui.deleteLater()
+
+        # Create and show new ShellExecUI
+        self.shell_exec_ui = ShellExecUI(ssh_client)
+        self.content_area.addWidget(self.shell_exec_ui)
+        self.content_area.setCurrentWidget(self.shell_exec_ui)

@@ -14,3 +14,5 @@ psutil>=6.0.0
 
 # Type hints helpers (optional)
 typing_extensions>=4.12.2
+
+pyte>=0.8.0
